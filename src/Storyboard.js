@@ -2,7 +2,7 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SettingsScreen from "./SettingsScreen";
-import ChannelsScreen from "./ChannelsScreen";
+import WeatherScreen from "./WeatherScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +11,8 @@ export default function Storyboard() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Channels"
-          component={ChannelsScreen}
+          name="WeatherData"
+          component={WeatherScreen}
         />
         <Stack.Screen
           name="Settings"
