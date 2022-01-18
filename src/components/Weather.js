@@ -1,19 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View, Platform } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Barometer } from 'expo-sensors';
 
 export default class Weather extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pressure: 0,
-            relativeAltitude: 0
+            pressure: 0
         };
 
-        this._subscription = Barometer.addListener(barometerData => {
+        this.subscription = Barometer.addListener(barometerData => {
             this.setState({
-                pressure: barometerData.pressure,
-                relativeAltitude: barometerData.relativeAltitude
+                pressure: barometerData.pressure
             });
         });
 
@@ -43,10 +41,6 @@ export default class Weather extends React.Component {
             <View style={this.styles.sensor}>
                 <Text>Barometer:</Text>
                 <Text>Pressure: {this.state.pressure * 100} Pa</Text>
-                <Text>
-                    Relative Altitude:{' '}
-                    {Platform.OS === 'ios' ? `${this.state.relativeAltitude} m` : `Only available on iOS`}
-                </Text>
             </View>
         )
     }
